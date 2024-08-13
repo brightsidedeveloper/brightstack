@@ -1,7 +1,7 @@
 import 'react-native-reanimated'
 
-import App from '@/App'
 import { SplashScreen } from 'expo-router'
+import App from '@/App'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
