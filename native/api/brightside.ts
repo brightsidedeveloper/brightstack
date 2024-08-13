@@ -1,4 +1,4 @@
-import { BrightSideNative } from 'brightside-native'
+import BrightSideNative from "@/temp/src/classes/BrightSideNative"
 
 const brightside = new BrightSideNative()
 

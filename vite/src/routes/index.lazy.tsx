@@ -1,10 +1,28 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
+import useBrightSide from '../temp/src/hooks/useBrightSide'
+import { useEffect } from 'react'
+import { useNativeListener } from '../temp/src'
+import { z } from 'zod'
 
 export const Route = createLazyFileRoute('/')({
   component: IndexComponent,
 })
 
 function IndexComponent() {
+  const brightside = useBrightSide()
+
+  useEffect(() => {
+    brightside.native.postToNative('test', { woah: 'cool' })
+  }, [brightside])
+
+  useNativeListener(
+    'test',
+    (data) => {
+      console.log(data)
+    },
+    z.object({ woah: z.any() })
+  )
+
   return (
     <main className="h-dvh  gap-3 flex flex-col p-10 text-left">
       <h2 className="text-4xl font-medium -mb-2">BrightSide's</h2>

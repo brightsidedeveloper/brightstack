@@ -57,6 +57,9 @@
   --chart-5: 340 75% 55%;
 }
 
+html {
+  @apply overflow-y-hidden;
+}
 body {
   @apply bg-background text-foreground font-sans antialiased;
 }

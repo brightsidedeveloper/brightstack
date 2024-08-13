@@ -5,6 +5,8 @@ import './index.css'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { BrightSideProvider } from './temp/src'
+import brightside from './api/brightside'
 
 const queryClient = new QueryClient()
 
@@ -24,9 +26,11 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+      <BrightSideProvider brightside={brightside}>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </BrightSideProvider>
     </StrictMode>
   )
 }

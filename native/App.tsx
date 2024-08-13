@@ -1,8 +1,9 @@
 import { useColorScheme, View } from 'react-native'
 import * as Notifications from 'expo-notifications'
-import { WebView } from 'react-native-webview'
 import { useMemo } from 'react'
-import { useWebView, useWebviewListener } from 'brightside-native'
+import { WebView } from 'react-native-webview'
+import useWebview from './temp/src/hooks/useWebview'
+import useWebViewListener from './temp/src/hooks/useWebviewListener'
 import { z } from 'zod'
 
 interface AppProps {
@@ -18,17 +19,18 @@ Notifications.setNotificationHandler({
 })
 
 export default function App({ onWebViewLoadEnd }: AppProps) {
-  const { webviewRef } = useWebView()
+  const { webviewRef, handleMessage, sendMessage } = useWebview()
   const theme = useColorScheme()
 
   const backgroundColor = useMemo(() => ThemeColors[theme ?? 'light'].background, [theme])
 
-  const listen = useWebviewListener(
+  useWebViewListener(
     'test',
-    ({ hello }) => {
-      console.log(hello)
+    ({ woah }) => {
+      sendMessage('test', { woah: { that: 'was', fast: '!' } })
+      console.log(woah)
     },
-    z.object({ hello: z.string() })
+    z.object({ woah: z.string() })
   )
 
   return (
@@ -39,13 +41,13 @@ export default function App({ onWebViewLoadEnd }: AppProps) {
           marginTop: 40,
         }}
       >
-        <WebView ref={webviewRef} source={{ uri: ENTRY }} onLoadEnd={onWebViewLoadEnd} />
+        <WebView ref={webviewRef} source={{ uri: ENTRY }} onMessage={handleMessage} onLoadEnd={onWebViewLoadEnd} />
       </View>
     </View>
   )
 }
 
-const ENTRY = 'https://github.com/brightsidedeveloper/brightstack'
+const ENTRY = 'https://brightstack-vite.vercel.app/'
 
 const ThemeColors = {
   primary: '#2a6ec6',
