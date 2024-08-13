@@ -1,7 +1,12 @@
+import WebView from "react-native-webview"
 import { ZodSchema } from "zod"
 
 export default class BrightSideWebView {
-  
+  postToWebView(key: string, data: unknown, webview: WebView) {
+    webview.injectJavaScript(`
+          window.postMessage(${JSON.stringify({ key, data })}, '*')
+        `)
+  }
 
   listenToWebView<T>(
     key: string,
