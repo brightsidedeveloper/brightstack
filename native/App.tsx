@@ -2,6 +2,8 @@ import { useColorScheme, View } from 'react-native'
 import * as Notifications from 'expo-notifications'
 import { WebView } from 'react-native-webview'
 import { useMemo } from 'react'
+import { useWebView, useWebviewListener } from 'brightside-native'
+import { z } from 'zod'
 
 interface AppProps {
   onWebViewLoadEnd: () => void
@@ -16,9 +18,18 @@ Notifications.setNotificationHandler({
 })
 
 export default function App({ onWebViewLoadEnd }: AppProps) {
+  const { webviewRef } = useWebView()
   const theme = useColorScheme()
 
   const backgroundColor = useMemo(() => ThemeColors[theme ?? 'light'].background, [theme])
+
+  const listen = useWebviewListener(
+    'test',
+    ({ hello }) => {
+      console.log(hello)
+    },
+    z.object({ hello: z.string() })
+  )
 
   return (
     <View style={{ flex: 1, backgroundColor }}>
@@ -28,7 +39,7 @@ export default function App({ onWebViewLoadEnd }: AppProps) {
           marginTop: 40,
         }}
       >
-        <WebView source={{ uri: ENTRY }} onLoadEnd={onWebViewLoadEnd} />
+        <WebView ref={webviewRef} source={{ uri: ENTRY }} onLoadEnd={onWebViewLoadEnd} />
       </View>
     </View>
   )
