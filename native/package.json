@@ -18,7 +18,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^6.0.2",
     "axios": "^1.7.2",
-    "brightside-native": "^1.1.7",
+    "brightside-native": "^1.1.14",
     "expo": "~51.0.24",
     "expo-constants": "~16.0.2",
     "expo-device": "^6.0.2",

@@ -3,7 +3,6 @@ import { BrightSideWebView, useTheme } from 'brightside-native'
 
 export default function App() {
   const { backgroundColor } = useTheme()
-
   return (
     <View style={{ flex: 1, backgroundColor }}>
       <View
