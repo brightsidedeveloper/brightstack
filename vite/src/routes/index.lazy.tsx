@@ -17,7 +17,9 @@ function IndexComponent() {
       <p className="max-w-96 font-light">A full-stack TypeScript framework for building modern Native & Web applications.</p>
       <button
         onClick={async () => {
-          setToken((await brightside.push.getPushToken()).token)
+          const { token } = await brightside.push.getPushToken()
+          alert('Registered for notifications! ' + token)
+          setToken(token)
         }}
         className="bg-primary rounded-md py-2 px-3 ml-auto w-fit"
       >

@@ -1,7 +1,5 @@
-import 'react-native-reanimated'
-
 import { BrightSideProvider } from 'brightside-native'
-import App from '@/App'
+import App from './App'
 
 const ThemeColors = {
   light: {
