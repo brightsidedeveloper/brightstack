@@ -3,10 +3,10 @@ import App from './App'
 
 const ThemeColors = {
   light: {
-    backgroundColor: '#e5f2ff',
+    backgroundColor: '#f5f9ff',
   },
   dark: {
-    backgroundColor: '#181f35',
+    backgroundColor: '#1a243d',
   },
 }
 
