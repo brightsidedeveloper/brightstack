@@ -2,7 +2,6 @@
   "name": "native",
   "main": "expo-router/entry",
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -19,6 +18,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^6.0.2",
     "axios": "^1.7.2",
+    "brightside-native": "^1.1.6",
     "expo": "~51.0.24",
     "expo-constants": "~16.0.2",
     "expo-device": "^6.0.2",

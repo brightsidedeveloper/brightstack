@@ -1,4 +1,4 @@
-import { BrightSideWeb } from "../temp/src"
+import { BrightSideWeb } from "brightside-web"
 
 const brightside = new BrightSideWeb({
     supabaseUrl: 'https://ybpjdhzaqaogrojgsjxh.supabase.co',

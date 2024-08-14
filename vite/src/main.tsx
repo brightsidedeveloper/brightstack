@@ -5,8 +5,8 @@ import './index.css'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { BrightSideProvider } from './temp/src'
 import brightside from './api/brightside'
+import { BrightSideProvider } from 'brightside-web'
 
 const queryClient = new QueryClient()
 
